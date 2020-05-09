@@ -11,13 +11,13 @@ class Todo extends React.Component{
             <div className="todo-item">
                 <input 
                     type="checkbox"
-                    checked={this.props.name.completed}
+                    checked={this.props.data.completed}
                     onChange={()=>{
-                        this.props.handleChange(this.props.name.id)
+                        this.props.handleChange(this.props.data.id)
                     }} 
                 />
-                <p style={this.props.name.completed? completedStyle: null}>
-                    {this.props.name.text}
+                <p style={this.props.data.completed? completedStyle: null}>
+                    {this.props.data.text}
                 </p>
             </div>
         )
