@@ -43,8 +43,8 @@ class App extends React.Component {
     this.setState((prevState)=>{
       return{
         todos:[
-          ...prevState.todos,
-          newTodo
+          newTodo,
+          ...prevState.todos
         ]
       }
     })
