@@ -79,21 +79,21 @@ input[type=text] {
 }
 
 .add-btn {
-  background-color: greenyellow;
+  background-color: #00FF00;
 }
 
 .edit-btn{
-  background-color: rgb(0, 89, 255);
+  background-color: #1E90FF;
 }
 
 .del-btn {
-  background-color: crimson;
+  background-color: #FF0000;
 }
 
 .close-btn {
   width: auto;
   height: auto;
-  background-color: crimson;
+  background-color: #FF0000;
   border-radius: 50%;
   padding: 5px 7px;
   position: absolute;

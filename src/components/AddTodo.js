@@ -15,7 +15,6 @@ class AddTodo extends React.Component{
     }
 
     handleChange(event){
-        //const idNum = this.state.todos.length + 1;
         this.setState({
           newTodo: {
             id: '',
@@ -36,7 +35,7 @@ class AddTodo extends React.Component{
     }
 
     render(){
-        const btnColor = this.props.btnText === 'Update'? {backgroundColor: 'rgb(0, 89, 255)'} : {backgroundColor: 'greenyellow'}
+        const btnColor = this.props.btnText === 'Update'? {backgroundColor: 'rgb(0, 89, 255)'} : {backgroundColor: '#00FF00'}
         return(
             <div>
                 <input
@@ -57,7 +56,6 @@ class AddTodo extends React.Component{
                 >
                     {this.props.btnText}
                 </button>
-               {/* <p>{this.state.newTodo.text}</p>  */}
             </div>
         )
     }

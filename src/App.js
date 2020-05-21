@@ -1,6 +1,6 @@
 import React from 'react';
 import Todo from './components/TodoItem'
-import todosData from './data/TodoData'
+//import todosData from './data/TodoData'
 import AddTodo from './components/AddTodo'
 import './styles/App.css';
 
@@ -9,15 +9,12 @@ class App extends React.Component {
   constructor(){
     super()
     this.state = {
-      todos: todosData,
+      todos: [],
       
     }
-    this.handleChange = this.handleChange.bind(this);
-    this.addNewTodo = this.addNewTodo.bind(this);
-    this.deleteTodo = this.deleteTodo.bind(this);
   }
 
-  handleChange(id){
+  handleChange = (id) => {
     this.setState((prevState)=> {
         const updatedTodos = prevState.todos.map((todo)=>{
             if(todo.id === id){
@@ -37,7 +34,7 @@ class App extends React.Component {
 
  
 
-  addNewTodo(newTodo){
+  addNewTodo = (newTodo)=>{
     const num = Date.now()
     newTodo.id = Number(num.toString() + (this.state.todos.length + 1));
     this.setState((prevState)=>{
@@ -48,15 +45,22 @@ class App extends React.Component {
         ]
       }
     })
+
+    if (localStorage['todos']) {
+      localStorage.setItem('todos',JSON.stringify([newTodo, ...this.state.todos]));
+    } else {
+      localStorage.setItem('todos',JSON.stringify([newTodo]))
+    }
+    
   }
 
-  deleteTodo(id){
+  deleteTodo = (id)=>{
     if (window.confirm('Are you sure?')) {
       this.setState((prevState)=>{
-        const updatedTodos = prevState.todos.filter(todo=>todo.id !== id)
+        const updatedTodos = prevState.todos.filter(todo=>todo.id !== id);
+        localStorage.setItem('todos',JSON.stringify(updatedTodos));
         return{
           todos: updatedTodos,
-          ...prevState.newTodo
         }
       })
     }
@@ -66,16 +70,28 @@ class App extends React.Component {
     todo.id = id;
     const itemIndex = this.state.todos.findIndex(data => data.id === id)
     const newArray = [
-    // destructure all items from beginning to the indexed item
       ...this.state.todos.slice(0, itemIndex),
-    // add the updated item to the array
       todo,
-    // add the rest of the items to the array from the index after the replaced item
       ...this.state.todos.slice(itemIndex + 1)
     ]
+    localStorage.setItem('todos',JSON.stringify(newArray));
     this.setState({ todos: newArray })
   }
   
+  componentDidMount(){
+    if (localStorage['todos']) {
+      const todoList = JSON.parse(localStorage['todos']);
+      this.setState({
+        todos: todoList
+      })
+    } else {
+      this.setState({
+        todos:[]
+      })
+    }
+  }
+
+
   render(){
     const todoList = this.state.todos.map((todo)=>{
       return(
@@ -92,8 +108,6 @@ class App extends React.Component {
     return(
       <div className="todo-list">
         <AddTodo
-          //handleChange= {this.changeValue}
-          //text={this.state.newTodo.text}
           edit= {this.addNewTodo}
           btnText='Add'
         />

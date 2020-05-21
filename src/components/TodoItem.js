@@ -54,7 +54,7 @@ class Todo extends React.Component{
                                 this.props.deleteTodo(this.props.data.id)
                             }}
                         >
-                            Delete
+                            Del
                         </button>
                     </div>
 
