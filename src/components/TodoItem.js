@@ -27,7 +27,7 @@ class Todo extends React.Component{
             <div className="todo-item">
                 <div className="todo-item-cont">
                     <div
-                        style={{display:'flex'}}
+                        style={{display:'flex', alignItems:'center'}}
                     >
                         <input 
                             type="checkbox"
