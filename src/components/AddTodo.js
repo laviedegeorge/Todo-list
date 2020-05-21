@@ -41,7 +41,7 @@ class AddTodo extends React.Component{
                 <input
                     type='text'
                     name= 'text'
-                    value={this.state.text}
+                    value={this.state.newTodo.text}
                     onChange={this.handleChange}
                 />
                 
