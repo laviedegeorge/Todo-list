@@ -1,7 +1,7 @@
 import React from 'react';
 import Todo from './components/TodoItem'
-//import todosData from './data/TodoData'
-import AddTodo from './components/AddTodo'
+import Header from './components/Header'
+import Footer from './components/Footer'
 import './styles/App.css';
 
 
@@ -107,11 +107,9 @@ class App extends React.Component {
     })
     return(
       <div className="todo-list">
-        <AddTodo
-          edit= {this.addNewTodo}
-          btnText='Add'
-        />
+        <Header edit= {this.addNewTodo}/>
         {todoList}
+        <Footer/>
       </div>
     )
   }

@@ -1,28 +1,148 @@
+:root {
+  --primary-color: #f5f5f5;
+  --font-color: #333;
+  --bg-color: #fff;
+  --box-shadow: 1px 1px 10px #333;
+  --border-light:2px solid #efefef;
+  --border-dark: 2px solid #333;
+}
+
+[data-theme="dark"] {
+  --primary-color:#292922;
+  --font-color: #fff; 
+  --bg-color: #333;
+  --box-shadow: 1px 1px 10px #f5f5f5;
+  --border-light:2px solid #00000080;
+  --border-dark: 2px solid #ffffff;
+}
+
 body {
-  background-color: whitesmoke;
+  background-color: var(--primary-color);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+header, footer{
+  width: 100%;
+  background-color: var(--bg-color);
+  border-bottom: var(--border-dark);
+  position: sticky;
+  top: 0%;
+}
+
+header > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+header > div:last-child {
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+h1{
+  font-family: 'Dancing Script', cursive;
+  border: var(--border-light);
+  border-radius: 10px;
+  padding: 5px;
+}
+
+footer{
+  /* border-top: var(--border-dark); */
+  border-bottom: none;
+  bottom: 0%;
+  margin-top: 10px;
+}
+
+footer > p > a {
+  color: var(--font-color);
 }
 
 .todo-list {
-  background-color: white;
+  background-color: var(--bg-color);
   margin: auto;
   width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid #efefef;
+  border: var(--border);
   box-shadow:
   /* The top layer shadow */
-      0 1px 1px rgba(0,0,0,0.15),
+      0 1px 1px var(--font-color),
           /* The second layer */
-      0 10px 0 -5px #eee,
+      0 10px 0 -5px var(--bg-color),
           /* The second layer shadow */
-      0 10px 1px -4px rgba(0,0,0,0.15),
+      0 10px 1px -4px var(--font-color),
           /* The third layer */
-      0 20px 0 -10px #eee,
+      0 20px 0 -10px var(--bg-color),
           /* The third layer shadow */
-      0 20px 1px -9px rgba(0,0,0,0.15);
-  padding: 30px;
+      0 20px 1px -9px var(--font-color);
+  padding: 0px 30px 30px;
 }
+
+/*---------------------toggle switch---------------------------*/
+.theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.theme-switch-wrapper > em {
+  margin-left: 10px;
+  font-size: 1rem;
+}
+
+.theme-switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+
+.theme-switch input {
+  display:none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 26px;
+}
+
+input:checked + .slider {
+  background-color: #66bb6a;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* ----------------------------------------------------------- */
 
 .todo-item {
   padding-top: 30px;
@@ -31,7 +151,7 @@ body {
   font-family: Roboto, sans-serif;
   font-weight: 100;
   font-size: 15px;
-  color: #333333;
+  color: var(--font-color);
 }
 
 .todo-item-cont {
@@ -54,12 +174,16 @@ input[type=text] {
   width: 200px;
   height: 30px;
   background-color: transparent;
-  color: #333333;
-  border: 2px solid #333;
+  color: var(--font-color);
+  border: var(--border-light);
   border-radius: 5px;
   margin: 5px;
   padding-left:10px;
   transition: all .3s ease-in-out;
+}
+
+input[type=text]:focus {
+  border: var(--border-dark);
 }
 
 .btn {
@@ -80,7 +204,7 @@ input[type=text] {
 }
 
 .add-btn {
-  background-color: #00FF00;
+  background-color: #66bb6a;
 }
 
 .edit-btn{
@@ -105,13 +229,13 @@ input[type=text] {
 .modal {
   height: 70px;
   align-items: center;
-  background-color: #fff;
-  box-shadow: 1px 1px 10px #333;
+  background-color: var(--bg-color);
+  box-shadow: var(--box-shadow);
   border-radius: 5px;
   padding: 25px 20px;
   position: absolute;
-  top: 30%;
-  left: 34%;
+  left: 50%; 
+  transform: translateX(-50%);
 }
 
 @media (max-width:500px) {
