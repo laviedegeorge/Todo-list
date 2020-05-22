@@ -27,7 +27,6 @@ class ColorModeSwitch extends React.Component {
     }
 
     componentDidMount(){
-        console.log(ls('theme'))
         if (ls('theme')) {
           const theme = ls('theme');
           if (theme === 'dark') {

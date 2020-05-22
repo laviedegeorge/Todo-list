@@ -2,6 +2,7 @@ import React from 'react'
 //import { render } from '@testing-library/react';
 import ColorModeSwitch from './ColorModeSwitch'
 import AddTodo from './AddTodo'
+import ProgrssBar from './ProgressBar'
 
 class Header extends React.Component {
     
@@ -17,6 +18,7 @@ class Header extends React.Component {
                     edit= {this.props.edit}
                     btnText='Add'
                     />
+                    <ProgrssBar todos={this.props.todos}/>
                 </div>
             </header>
         )

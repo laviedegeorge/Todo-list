@@ -107,7 +107,10 @@ class App extends React.Component {
     })
     return(
       <div className="todo-list">
-        <Header edit= {this.addNewTodo}/>
+        <Header 
+          edit= {this.addNewTodo}
+          todos={this.state.todos}
+        />
         {todoList}
         <Footer/>
       </div>
