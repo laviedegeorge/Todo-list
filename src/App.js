@@ -25,7 +25,7 @@ class App extends React.Component {
             }
             return todo
         })
-
+        localStorage.setItem('todos', JSON.stringify(updatedTodos))
         return ({
             todos : updatedTodos
         })
